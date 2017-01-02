@@ -8,4 +8,9 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="nav_text_padding_drawable">18dp</dimen>
     <dimen name="nav_navigation_view_width">200dp</dimen>
+    <dimen name="nav_head_margin_top">40dp</dimen>
+    <dimen name="nav_item_margin_top">20dp</dimen>
+    <dimen name="nav_item_margin_start">10dp</dimen>
+    <dimen name="nav_item_text_size">12sp</dimen>
+    <dimen name="nav_item_height">18dp</dimen>
 </resources>

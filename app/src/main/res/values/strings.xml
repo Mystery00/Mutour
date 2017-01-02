@@ -5,9 +5,10 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-
     <string name="text_login">Sign In/Up</string>
+
+    <string name="menu_search">Search</string>
+
     <string name="nav_i_mu_blog">iMu Blog</string>
     <string name="nav_school_activity">School Activity</string>
     <string name="nav_my_books">My Books</string>

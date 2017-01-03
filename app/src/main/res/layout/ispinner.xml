@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:id="@+id/i_spinner"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="@dimen/spinner_head_height">
+
+        <TextView
+            android:drawablePadding="@dimen/spinner_head_padding"
+            android:textSize="@dimen/spinner_head_text_size"
+            android:id="@+id/head_text"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:drawableEnd="@drawable/ic_more"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:id="@+id/list"
+        android:background="@color/color_spinner_background"
+        android:visibility="gone"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

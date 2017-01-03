@@ -5,5 +5,5 @@
     <color name="colorAccent">#d6d6d6</color>
 
     <color name="color_white">#FFFFFF</color>
-    <color name="color_test">#683b3b</color>
+    <color name="color_spinner_background">#49000000</color>
 </resources>

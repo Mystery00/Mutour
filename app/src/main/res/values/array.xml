@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="books_classification">
+        <item>Teaching materials</item>
+        <item>Literary books</item>
+    </string-array>
+</resources>

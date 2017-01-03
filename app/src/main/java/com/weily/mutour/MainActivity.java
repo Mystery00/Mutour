@@ -1,10 +1,7 @@
 package com.weily.mutour;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -21,6 +18,7 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private FloatingActionButton fab;
     private DrawerLayout drawer;
+    private iSpinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,6 +35,10 @@ public class MainActivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        spinner = (iSpinner) findViewById(R.id.spinner);
+
+        String[] strings = new String[]{"1", "2", "3"};
+        spinner.setStrings(strings);
 
         setSupportActionBar(toolbar);
     }

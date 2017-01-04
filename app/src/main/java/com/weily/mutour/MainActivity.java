@@ -11,6 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mystery0.ispinner.SpinnerItemClickListener;
+import com.mystery0.ispinner.iSpinner;
+
 public class MainActivity extends AppCompatActivity
 {
     private static final String TAG = "MainActivity";
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity
 
         String[] strings = new String[]{"1", "2", "3"};
         spinner.setStrings(strings);
+        spinner.setSelected(0);
 
         setSupportActionBar(toolbar);
     }
@@ -74,6 +78,14 @@ public class MainActivity extends AppCompatActivity
                     fab.setImageResource(R.drawable.ic_close);
                     isOpen = true;
                 }
+            }
+        });
+        spinner.setOnItemClickListener(new SpinnerItemClickListener()
+        {
+            @Override
+            public void onItemClick(int position)
+            {
+                Log.i(TAG, "onItemClick: " + position);
             }
         });
     }

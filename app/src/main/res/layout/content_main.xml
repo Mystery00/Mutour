@@ -10,7 +10,7 @@
     tools:context="com.weily.mutour.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <com.weily.mutour.iSpinner
+    <com.mystery0.ispinner.iSpinner
         android:layout_width="match_parent"
         android:id="@+id/spinner"
         android:layout_height="match_parent"/>

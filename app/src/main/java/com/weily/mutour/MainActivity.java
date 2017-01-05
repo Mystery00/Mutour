@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity
     private FloatingActionButton fab;
     private DrawerLayout drawer;
     private iSpinner spinner;
-    private View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,9 +39,8 @@ public class MainActivity extends AppCompatActivity
         fab = (FloatingActionButton) findViewById(R.id.fab);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         spinner = (iSpinner) findViewById(R.id.spinner);
-        layout = spinner.getView();
 
-        String[] strings = new String[]{"1", "2", "3"};
+        String[] strings = getResources().getStringArray(R.array.books_classification);
         spinner.setStrings(strings);
         spinner.setSelected(0);
 
@@ -60,6 +58,9 @@ public class MainActivity extends AppCompatActivity
                 if (drawer.isDrawerOpen(GravityCompat.START))
                 {
                     drawer.closeDrawer(GravityCompat.START);
+                } else if (drawer.isDrawerOpen(GravityCompat.END))
+                {
+                    drawer.closeDrawer(GravityCompat.END);
                 } else
                 {
                     drawer.openDrawer(GravityCompat.START);
@@ -106,6 +107,9 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START))
         {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (drawer.isDrawerOpen(GravityCompat.END))
+        {
+            drawer.closeDrawer(GravityCompat.END);
         } else
         {
             super.onBackPressed();

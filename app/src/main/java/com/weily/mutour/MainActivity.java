@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     private FloatingActionButton fab;
     private DrawerLayout drawer;
     private iSpinner spinner;
+    private View layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         fab = (FloatingActionButton) findViewById(R.id.fab);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         spinner = (iSpinner) findViewById(R.id.spinner);
+        layout = spinner.getView();
 
         String[] strings = new String[]{"1", "2", "3"};
         spinner.setStrings(strings);
@@ -62,6 +64,14 @@ public class MainActivity extends AppCompatActivity
                 {
                     drawer.openDrawer(GravityCompat.START);
                 }
+            }
+        });
+        toolbar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                spinner.setLayoutVisiblity(View.GONE);
             }
         });
         fab.setOnClickListener(new View.OnClickListener()

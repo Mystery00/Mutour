@@ -1,7 +1,6 @@
 package com.weily.mutour;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -13,15 +12,16 @@ import android.view.MenuItem;
 
 import com.mystery0.ispinner.SpinnerItemClickListener;
 import com.mystery0.ispinner.iSpinner;
+import com.weily.ifloatmenu.MenuClick;
+import com.weily.ifloatmenu.iFloatMenu;
 
 public class MainActivity extends AppCompatActivity
 {
     private static final String TAG = "MainActivity";
-    private boolean isOpen = false;
     private Toolbar toolbar;
-    private FloatingActionButton fab;
     private DrawerLayout drawer;
     private iSpinner spinner;
+    private iFloatMenu floatMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -36,13 +36,17 @@ public class MainActivity extends AppCompatActivity
     {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         spinner = (iSpinner) findViewById(R.id.spinner);
+        floatMenu = (iFloatMenu) findViewById(R.id.i_float_menu);
 
         String[] strings = getResources().getStringArray(R.array.books_classification);
         spinner.setStrings(strings);
         spinner.setSelected(0);
+
+        floatMenu.setOpenIcon(R.drawable.ic_open_icon);
+        floatMenu.setCloseIcon(R.drawable.ic_close_icon);
+        floatMenu.setNumber(3);
 
         setSupportActionBar(toolbar);
     }
@@ -75,28 +79,20 @@ public class MainActivity extends AppCompatActivity
                 spinner.setLayoutVisiblity(View.GONE);
             }
         });
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                if (isOpen)
-                {
-                    fab.setImageResource(R.drawable.ic_add);
-                    isOpen = false;
-                } else
-                {
-                    fab.setImageResource(R.drawable.ic_close);
-                    isOpen = true;
-                }
-            }
-        });
         spinner.setOnItemClickListener(new SpinnerItemClickListener()
         {
             @Override
             public void onItemClick(int position)
             {
                 Log.i(TAG, "onItemClick: " + position);
+            }
+        });
+        floatMenu.setMenuClickListener(new MenuClick()
+        {
+            @Override
+            public void menuClick(int position)
+            {
+                Log.i(TAG, "menuClick: " + position);
             }
         });
     }

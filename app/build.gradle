@@ -27,5 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
     compile 'com.github.Mystery00:iSpinner:603b27e07c'
+    compile 'com.github.Mystery00:iFloatMenu:078e58a769'
     testCompile 'junit:junit:4.12'
 }

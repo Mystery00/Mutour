@@ -65,8 +65,7 @@ public class MainActivity extends AppCompatActivity
         spinner.setStrings(strings);
         spinner.setSelected(0);
 
-        floatMenu.setOpenIcon(R.drawable.ic_open_icon);
-        floatMenu.setCloseIcon(R.drawable.ic_close_icon);
+        floatMenu.setIcon(R.drawable.ic_button_icon);
         floatMenu.setNumber(3);
 
         setSupportActionBar(toolbar);

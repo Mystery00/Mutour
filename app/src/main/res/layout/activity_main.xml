@@ -14,15 +14,17 @@
         android:layout_height="match_parent"/>
 
     <include
+        android:id="@+id/drawer_layout_start"
         layout="@layout/drawer_main"
+        android:layout_width="@dimen/nav_navigation_view_width"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:layout_width="@dimen/nav_navigation_view_width"/>
+        android:layout_gravity="start"/>
 
     <include
+        android:id="@+id/drawer_layout_end"
         layout="@layout/drawer_main"
+        android:layout_width="@dimen/nav_navigation_view_width"
         android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:layout_width="@dimen/nav_navigation_view_width"/>
+        android:layout_gravity="end"/>
 
 </android.support.v4.widget.DrawerLayout>

@@ -37,6 +37,7 @@ public class SplashActivity extends AppCompatActivity
                                 Intent intent = new Intent(SplashActivity.this, PageActivity.class);
                                 intent.putExtra("text", s);
                                 startActivity(intent);
+                                finish();
                             }
                         },
                         new Response.ErrorListener()
@@ -47,6 +48,7 @@ public class SplashActivity extends AppCompatActivity
                                 Log.e(TAG, "onErrorResponse: " + volleyError.getMessage(), volleyError);
                                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                                 startActivity(intent);
+                                finish();
                             }
                         });
                 queue.add(stringRequest);

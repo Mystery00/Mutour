@@ -11,7 +11,8 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -25,9 +26,9 @@
     <include layout="@layout/content_main"/>
 
     <com.weily.ifloatmenu.iFloatMenu
-        android:layout_width="wrap_content"
-        android:layout_gravity="end"
         android:id="@+id/i_float_menu"
-        android:layout_height="match_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"/>
 
 </android.support.design.widget.CoordinatorLayout>

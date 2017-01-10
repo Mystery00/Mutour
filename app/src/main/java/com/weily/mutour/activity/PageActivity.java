@@ -28,6 +28,7 @@ public class PageActivity extends AppCompatActivity
                 {
                     Thread.sleep(2000);
                     startActivity(new Intent(PageActivity.this, MainActivity.class));
+                    finish();
                 } catch (InterruptedException e)
                 {
                     e.printStackTrace();

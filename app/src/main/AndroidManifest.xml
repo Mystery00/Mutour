@@ -22,13 +22,18 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.PageActivity"
+            android:theme="@style/AppTheme.NoActionBar.PageTheme"/>
+        <activity
             android:name=".activity.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
-            android:name=".activity.PageActivity"
-            android:theme="@style/AppTheme.NoActionBar.PageTheme">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH"/>
+            </intent-filter>
         </activity>
     </application>
 

@@ -26,7 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
-    compile 'com.github.Mystery00:iSpinner:a398eca776'
+    compile 'com.github.Mystery00:iSpinner:af73d8a4fc'
     compile 'com.github.Mystery00:iFloatMenu:4654809575'
     testCompile 'junit:junit:4.12'
     compile files('libs/volley.jar')

@@ -1,9 +1,12 @@
 package com.weily.mutour.activity;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity
         spinner.setSelected(0);
 
         floatMenu.setIcon(R.drawable.ic_button_icon);
+        floatMenu.setIcons(new int[]{R.drawable.ic_new_post, R.drawable.ic_new_get});
         floatMenu.setNumber(3);
 
         setSupportActionBar(toolbar);
@@ -124,20 +128,30 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.main, menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
+        {
+            @Override
+            public boolean onQueryTextSubmit(String query)
+            {
+                Log.i(TAG, "onQueryTextSubmit: " + query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText)
+            {
+                return false;
+            }
+        });
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        switch (item.getItemId())
-        {
-            case R.id.action_search:
-                Log.i(TAG, "onOptionsItemSelected: search");
-                break;
-            default:
-                Log.i(TAG, "onOptionsItemSelected: default");
-        }
         return super.onOptionsItemSelected(item);
     }
 

@@ -64,20 +64,18 @@ public class MainActivity extends AppCompatActivity
         RecyclerViewAdapter viewAdapter = new RecyclerViewAdapter(showList);
         recyclerView_main.setAdapter(viewAdapter);
 
-        String[] strings = getResources().getStringArray(R.array.books_classification);
-        spinner.setStrings(strings);
+        spinner.setStrings(getResources().getStringArray(R.array.books_classification));
         spinner.setSelected(0);
 
+        floatMenu.setNumber(2);
         floatMenu.setIcon(R.drawable.ic_button_icon);
-        floatMenu.setIcons(new int[]{R.drawable.ic_new_post, R.drawable.ic_new_get});
-        floatMenu.setNumber(3);
+        floatMenu.setIcons(new int[]{R.drawable.ic_new_get, R.drawable.ic_new_post});
 
         setSupportActionBar(toolbar);
     }
 
     private void monitor()
     {
-
         toolbar.setNavigationIcon(R.drawable.ic_menu);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -96,7 +94,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onItemClick(int position)
             {
-                Log.i(TAG, "onItemClick: Spinner " + position);
+                switch (position)
+                {
+                    case 0:
+                        Log.i(TAG, "onItemClick: 教材");
+                        break;
+                    case 1:
+                        Log.i(TAG, "onItemClick: 文学");
+                        break;
+                }
             }
         });
         floatMenu.setMenuClickListener(new MenuClick()
@@ -104,7 +110,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void menuClick(int position)
             {
-                Log.i(TAG, "menuClick: FloatMenu " + position);
+                switch (position)
+                {
+                    case 0://post
+                        Log.i(TAG, "menuClick: 新书");
+                        break;
+                    case 1://get
+                        Log.i(TAG, "menuClick: 求书");
+                        break;
+                }
             }
         });
     }

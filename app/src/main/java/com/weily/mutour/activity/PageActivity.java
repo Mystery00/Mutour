@@ -26,7 +26,7 @@ public class PageActivity extends AppCompatActivity
             {
                 try
                 {
-                    Thread.sleep(2000);
+                    Thread.sleep(1500);
                     startActivity(new Intent(PageActivity.this, MainActivity.class));
                     finish();
                 } catch (InterruptedException e)

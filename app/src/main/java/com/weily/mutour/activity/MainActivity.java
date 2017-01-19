@@ -2,6 +2,8 @@ package com.weily.mutour.activity;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity
 
         spinner.setStrings(getResources().getStringArray(R.array.books_classification));
         spinner.setSelected(0);
+        spinner.setListBackground(Color.BLACK);
 
         floatMenu.setNumber(2);
         floatMenu.setIcon(R.drawable.ic_button_icon);
@@ -86,7 +89,10 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                spinner.setLayoutVisiblity(View.GONE);
+                if (spinner.isOpen())
+                {
+                    spinner.setLayoutVisiblity(View.GONE);
+                }
             }
         });
         spinner.setOnItemClickListener(new SpinnerItemClickListener()
@@ -114,6 +120,7 @@ public class MainActivity extends AppCompatActivity
                 {
                     case 0://post
                         Log.i(TAG, "menuClick: 新书");
+                        startActivity(new Intent(MainActivity.this, NewPostActivity.class));
                         break;
                     case 1://get
                         Log.i(TAG, "menuClick: 求书");

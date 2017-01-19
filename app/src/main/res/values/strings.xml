@@ -1,11 +1,17 @@
 <resources>
     <string name="app_name">Mutour</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_new_post">NewPostActivity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="hitokoto_api">https://api.lwl12.com/hitokoto/main/get</string>
+
+    <string name="hint_book_name">Name</string>
+    <string name="hint_book_price">Price</string>
+    <string name="hint_book_contact">Contact</string>
+    <string name="hint_book_remarks">Remarks</string>
 
     <string name="menu_search">Search</string>
 

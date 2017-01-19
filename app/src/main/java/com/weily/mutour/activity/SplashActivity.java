@@ -22,7 +22,7 @@ public class SplashActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         Log.i(TAG, "onCreate: test");
 
-        Thread thread = new Thread(new Runnable()
+        new Thread(new Runnable()
         {
             @Override
             public void run()
@@ -53,7 +53,6 @@ public class SplashActivity extends AppCompatActivity
                         });
                 queue.add(stringRequest);
             }
-        });
-        thread.start();
+        }).start();
     }
 }

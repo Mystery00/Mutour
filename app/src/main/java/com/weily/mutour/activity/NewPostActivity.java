@@ -22,8 +22,6 @@ import com.mystery0.ipicturechooser.iPictureChooser;
 import com.mystery0.ipicturechooser.iPictureChooserListener;
 import com.weily.mutour.R;
 
-import java.util.ArrayList;
-
 public class NewPostActivity extends AppCompatActivity
 {
     private static final String TAG = "NewPostActivity";
@@ -54,7 +52,7 @@ public class NewPostActivity extends AppCompatActivity
         book_remarks = (TextInputLayout) findViewById(R.id.text_book_remarks);
         pictureChooser = (iPictureChooser) findViewById(R.id.picture_chooser);
 
-        pictureChooser.setDataList(new ArrayList<String>(), new iPictureChooserListener()
+        pictureChooser.setDataList(new iPictureChooserListener()
         {
             @Override
             public void MainClick()
@@ -161,10 +159,10 @@ public class NewPostActivity extends AppCompatActivity
 
     private void checkPermission()
     {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED)
         {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission_group.STORAGE}, PERMISSION);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION);
         }
     }
 

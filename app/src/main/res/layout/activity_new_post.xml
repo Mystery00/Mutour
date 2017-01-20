@@ -87,8 +87,8 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/pictures"
+        <com.mystery0.ipicturechooser.iPictureChooser
+            android:id="@+id/picture_chooser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/text_book_remarks"/>

@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mystery0.ipicturechooser.iPictureChooser;
 import com.mystery0.ipicturechooser.iPictureChooserListener;
@@ -190,6 +191,8 @@ public class NewPostActivity extends AppCompatActivity
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
             {
                 Log.i(TAG, "onRequestPermissionsResult: 权限拒绝");
+                Toast.makeText(NewPostActivity.this, getString(R.string.hint_permission_storage), Toast.LENGTH_SHORT)
+                        .show();
                 finish();
             }
         }

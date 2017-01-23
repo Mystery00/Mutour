@@ -25,4 +25,5 @@
     <string name="nav_discuss">Discuss</string>
     <string name="nav_setting">Setting</string>
     <string name="nav_luv_letter">Luv Letter</string>
+    <string name="title_activity_luv_letter">LuvLetterActivity</string>
 </resources>

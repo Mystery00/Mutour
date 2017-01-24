@@ -1,9 +1,7 @@
 package com.weily.mutour.activity;
 
 import android.Manifest;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputLayout;
@@ -19,8 +17,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mystery0.ipicturechooser.iPictureChooser;
-import com.mystery0.ipicturechooser.iPictureChooserListener;
 import com.weily.mutour.R;
 
 public class NewPostActivity extends AppCompatActivity
@@ -32,7 +28,6 @@ public class NewPostActivity extends AppCompatActivity
     private TextInputLayout book_price;
     private TextInputLayout book_contact;
     private TextInputLayout book_remarks;
-    private iPictureChooser pictureChooser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,18 +46,6 @@ public class NewPostActivity extends AppCompatActivity
         book_price = (TextInputLayout) findViewById(R.id.text_book_price);
         book_contact = (TextInputLayout) findViewById(R.id.text_book_contact);
         book_remarks = (TextInputLayout) findViewById(R.id.text_book_remarks);
-        pictureChooser = (iPictureChooser) findViewById(R.id.picture_chooser);
-
-        pictureChooser.setDataList(new iPictureChooserListener()
-        {
-            @Override
-            public void MainClick()
-            {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, iPictureChooser.REQUEST_IMG_CHOOSE);
-            }
-        });
 
         setSupportActionBar(toolbar);
     }
@@ -99,10 +82,6 @@ public class NewPostActivity extends AppCompatActivity
         switch (item.getItemId())
         {
             case R.id.action_done:
-                Log.i(TAG, "onOptionsItemSelected: book_name:" + book_name.getEditText().getText().toString());
-                Log.i(TAG, "onOptionsItemSelected: book_price:" + book_price.getEditText().getText().toString());
-                Log.i(TAG, "onOptionsItemSelected: book_contact:" + book_contact.getEditText().getText().toString());
-                Log.i(TAG, "onOptionsItemSelected: book_remarks:" + book_remarks.getEditText().getText().toString());
                 if (inputFormat(
                         new TextInputLayout[]{book_name, book_price, book_contact, book_remarks},
                         new String[]{"error name", "error price", "error contact", "error remarks"}
@@ -164,21 +143,6 @@ public class NewPostActivity extends AppCompatActivity
                 != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION);
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
-        switch (requestCode)
-        {
-            case iPictureChooser.REQUEST_IMG_CHOOSE:
-                Uri uri = data.getData();
-                if (uri != null)
-                {
-                    pictureChooser.setUpdatedPicture(uri);
-                }
-                break;
         }
     }
 

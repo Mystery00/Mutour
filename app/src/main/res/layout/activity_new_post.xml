@@ -36,7 +36,8 @@
             android:id="@+id/text_book_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_book_name">
+            android:hint="@string/hint_book_name"
+            app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
@@ -50,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_book_name"
-            android:hint="@string/hint_book_price">
+            android:hint="@string/hint_book_price"
+            app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
@@ -64,7 +66,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_book_price"
-            android:hint="@string/hint_book_contact">
+            android:hint="@string/hint_book_contact"
+            app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
@@ -78,7 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/text_book_contact"
-            android:hint="@string/hint_book_remarks">
+            android:hint="@string/hint_book_remarks"
+            app:errorEnabled="true">
 
             <android.support.design.widget.TextInputEditText
                 android:layout_width="match_parent"
@@ -87,10 +91,10 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <com.mystery0.ipicturechooser.iPictureChooser
-            android:id="@+id/picture_chooser"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <TextView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_below="@id/text_book_remarks"/>
 
     </RelativeLayout>

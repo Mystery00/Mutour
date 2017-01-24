@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private iSpinner spinner;
     private iFloatMenu floatMenu;
+    private RecyclerViewAdapter viewAdapter;
+    private List<MainListShow> showList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -61,9 +63,9 @@ public class MainActivity extends AppCompatActivity
         recyclerViewInit(menu_start);
         recyclerViewInit(menu_end);
 
-        List<MainListShow> showList = GetList.getList(1);
+        showList = GetList.getList(1);
         recyclerView_main.setLayoutManager(new LinearLayoutManager(this));
-        RecyclerViewAdapter viewAdapter = new RecyclerViewAdapter(showList);
+        viewAdapter = new RecyclerViewAdapter(showList);
         recyclerView_main.setAdapter(viewAdapter);
 
         spinner.setStrings(getResources().getStringArray(R.array.books_classification));
@@ -103,10 +105,14 @@ public class MainActivity extends AppCompatActivity
                 switch (position)
                 {
                     case 0:
-                        Log.i(TAG, "onItemClick: 教材");
+                        showList.clear();
+                        showList.addAll(GetList.getList(2));
+                        viewAdapter.notifyDataSetChanged();
                         break;
                     case 1:
-                        Log.i(TAG, "onItemClick: 文学");
+                        showList.clear();
+                        showList.addAll(GetList.getList(1));
+                        viewAdapter.notifyDataSetChanged();
                         break;
                 }
             }

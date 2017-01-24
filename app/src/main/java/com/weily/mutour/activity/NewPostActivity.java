@@ -1,6 +1,7 @@
 package com.weily.mutour.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.mystery0.ipicturechooser.iPictureChooser;
+import com.mystery0.ipicturechooser.iPictureChooserListener;
 import com.weily.mutour.R;
 
 public class NewPostActivity extends AppCompatActivity
@@ -28,6 +31,7 @@ public class NewPostActivity extends AppCompatActivity
     private TextInputLayout book_price;
     private TextInputLayout book_contact;
     private TextInputLayout book_remarks;
+    private iPictureChooser pictureChooser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -46,6 +50,7 @@ public class NewPostActivity extends AppCompatActivity
         book_price = (TextInputLayout) findViewById(R.id.text_book_price);
         book_contact = (TextInputLayout) findViewById(R.id.text_book_contact);
         book_remarks = (TextInputLayout) findViewById(R.id.text_book_remarks);
+        pictureChooser = (iPictureChooser) findViewById(R.id.picture_chooser);
 
         setSupportActionBar(toolbar);
     }
@@ -66,6 +71,16 @@ public class NewPostActivity extends AppCompatActivity
         setError(book_price);
         setError(book_contact);
         setError(book_remarks);
+        pictureChooser.setDataList(R.drawable.ic_more, new iPictureChooserListener()
+        {
+            @Override
+            public void MainClick()
+            {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, iPictureChooser.REQUEST_IMG_CHOOSE);
+            }
+        });
     }
 
     @Override
@@ -143,6 +158,18 @@ public class NewPostActivity extends AppCompatActivity
                 != PackageManager.PERMISSION_GRANTED)
         {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == iPictureChooser.REQUEST_IMG_CHOOSE)
+        {
+            if (data != null)
+            {
+                pictureChooser.setUpdatedPicture(data.getData());
+            }
         }
     }
 

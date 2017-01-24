@@ -28,9 +28,8 @@ dependencies {
     compile 'com.android.support:design:25.1.0'
     compile 'com.github.Mystery00:iSpinner:1.0.1'
     compile 'com.github.Mystery00:iFloatMenu:1.0.0'
-    compile 'cn.finalteam.rxgalleryfinal:library:0.0.3'
+    compile 'com.github.Mystery00:iPictureChooser:1.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/volley.jar')
-    compile files('lib/volley.jar')
 }

@@ -1,13 +1,13 @@
 package com.weily.mutour.adapter;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.weily.mutour.callback.DrawerItemListener;
 import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.R;
 
@@ -15,8 +15,8 @@ import java.util.List;
 
 public class DrawerMenuAdapter extends RecyclerView.Adapter<DrawerMenuAdapter.ViewHolder>
 {
-    private static final String TAG = "DrawerMenuAdapter";
     private List<MainListShow> list;
+    private DrawerItemListener drawerItemListener;
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -33,22 +33,23 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<DrawerMenuAdapter.Vi
         }
     }
 
-    public DrawerMenuAdapter(List<MainListShow> list)
+    public DrawerMenuAdapter(List<MainListShow> list, DrawerItemListener drawerItemListener)
     {
         this.list = list;
+        this.drawerItemListener = drawerItemListener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view_menu, parent, false);
-        final DrawerMenuAdapter.ViewHolder holder = new DrawerMenuAdapter.ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
         holder.fullView.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                monitor(holder.getAdapterPosition());
+                drawerItemListener.onItemClick(holder.getAdapterPosition(), holder.textView.getText().toString());
             }
         });
         return holder;
@@ -66,15 +67,5 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<DrawerMenuAdapter.Vi
     public int getItemCount()
     {
         return list.size();
-    }
-
-    private void monitor(int position)
-    {
-        switch (position)
-        {
-            case 0:
-                Log.i(TAG, "monitor: " + list.get(position).getText());
-                break;
-        }
     }
 }

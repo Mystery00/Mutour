@@ -14,4 +14,9 @@
     tools:context="com.weily.mutour.activity.LuvLetterActivity"
     tools:showIn="@layout/activity_luv_letter">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/luv_letter_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </RelativeLayout>

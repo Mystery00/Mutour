@@ -24,13 +24,14 @@ import com.weily.ifloatmenu.MenuClick;
 import com.weily.ifloatmenu.iFloatMenu;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
 import com.weily.mutour.adapter.RecyclerViewAdapter;
+import com.weily.mutour.callback.DrawerItemListener;
 import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.public_method.GetList;
 import com.weily.mutour.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends AppCompatActivity implements DrawerItemListener
 {
     private static final String TAG = "MainActivity";
     private Toolbar toolbar;
@@ -187,7 +188,22 @@ public class MainActivity extends AppCompatActivity
         RecyclerView recyclerView_menu = (RecyclerView) parent.findViewById(R.id.recycler_view_menu);
         List<MainListShow> menuList = GetList.getMenu(getApplicationContext());
         recyclerView_menu.setLayoutManager(new LinearLayoutManager(this));
-        DrawerMenuAdapter drawerMenuAdapter = new DrawerMenuAdapter(menuList);
+        DrawerMenuAdapter drawerMenuAdapter = new DrawerMenuAdapter(menuList, this);
         recyclerView_menu.setAdapter(drawerMenuAdapter);
+    }
+
+    @Override
+    public void onItemClick(int position, String text)
+    {
+        Log.i(TAG, "onItemClick: position: " + position);
+        Log.i(TAG, "onItemClick: text: " + text);
+        switch (position)
+        {
+            case 0:
+                break;
+            case 1:
+                startActivity(new Intent(MainActivity.this, LuvLetterActivity.class));
+                break;
+        }
     }
 }

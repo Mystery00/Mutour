@@ -20,7 +20,6 @@ public class SplashActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        Log.i(TAG, "onCreate: test");
 
         new Thread(new Runnable()
         {

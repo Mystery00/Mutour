@@ -71,7 +71,7 @@ public class NewPostActivity extends AppCompatActivity
         setError(book_price);
         setError(book_contact);
         setError(book_remarks);
-        pictureChooser.setDataList(R.drawable.ic_more, new iPictureChooserListener()
+        pictureChooser.setDataList(R.drawable.ic_picture_chooser, new iPictureChooserListener()
         {
             @Override
             public void MainClick()

@@ -5,6 +5,7 @@
 
     <color name="color_white">#FFFFFF</color>
     <color name="color_spinner_background">#49000000</color>
+    <color name="color_selector">#646773</color>
     <color name="color_red">#F44336</color>
     <color name="color_pink">#E91E63</color>
     <color name="color_deep_purple">#673AB7</color>

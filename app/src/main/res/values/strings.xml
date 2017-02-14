@@ -13,9 +13,15 @@
     <string name="hint_book_price">Price</string>
     <string name="hint_book_contact">Contact</string>
     <string name="hint_book_remarks">Remarks</string>
+    <string name="hint_new_luv_letter_text">Say a secrets…</string>
+    <string name="hint_new_luv_letter_sender">Sender</string>
+    <string name="hint_new_luv_letter_anonymity">Anonymity</string>
     <string name="hint_permission_storage">Please give the permission of STORAGE. </string>
 
     <string name="menu_search">Search</string>
+
+    <string name="error_null_text">The text is null…</string>
+    <string name="error_null_sender">The sender is null…</string>
 
     <string name="text_login">Sign In/Up</string>
     <string name="nav_i_mu_blog">iMu Blog</string>
@@ -27,5 +33,7 @@
     <string name="nav_discuss">Discuss</string>
     <string name="nav_setting">Setting</string>
     <string name="nav_luv_letter">Luv Letter</string>
+
     <string name="title_activity_luv_letter">LuvLetterActivity</string>
+    <string name="title_activity_new_luv_letter">NewLuvLetterActivity</string>
 </resources>

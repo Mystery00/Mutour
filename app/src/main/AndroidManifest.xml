@@ -33,6 +33,7 @@
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH"/>
             </intent-filter>
@@ -45,6 +46,11 @@
         <activity
             android:name=".activity.LuvLetterActivity"
             android:label="@string/title_activity_luv_letter"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name=".activity.NewLuvLetterActivity"
+            android:label="@string/title_activity_new_luv_letter"
             android:theme="@style/AppTheme">
         </activity>
     </application>

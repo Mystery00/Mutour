@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.weily.mutour.R;
+import com.weily.mutour.callback.LuvLetterListener;
 import com.weily.mutour.class_class.LuvLetter;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.List;
 public class LuvLetterAdapter extends RecyclerView.Adapter<LuvLetterAdapter.ViewHolder>
 {
     private List<LuvLetter> list;
+    private LuvLetterListener letterListener;
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -31,9 +33,10 @@ public class LuvLetterAdapter extends RecyclerView.Adapter<LuvLetterAdapter.View
         }
     }
 
-    public LuvLetterAdapter(List<LuvLetter> list)
+    public LuvLetterAdapter(List<LuvLetter> list, LuvLetterListener letterListener)
     {
         this.list = list;
+        this.letterListener = letterListener;
     }
 
     @Override
@@ -46,6 +49,7 @@ public class LuvLetterAdapter extends RecyclerView.Adapter<LuvLetterAdapter.View
             @Override
             public void onClick(View v)
             {
+                letterListener.itemClick(list.get(holder.getAdapterPosition()), holder.getAdapterPosition());
             }
         });
         return holder;

@@ -1,22 +1,28 @@
 package com.weily.mutour.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.LuvLetterAdapter;
+import com.weily.mutour.callback.LuvLetterListener;
 import com.weily.mutour.class_class.LuvLetter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuvLetterActivity extends AppCompatActivity
+public class LuvLetterActivity extends AppCompatActivity implements LuvLetterListener
 {
+    private static final String TAG = "LuvLetterActivity";
     private Toolbar toolbar;
+    private FloatingActionButton floatingActionButton;
     private List<LuvLetter> list = new ArrayList<>();
 
     @Override
@@ -42,8 +48,9 @@ public class LuvLetterActivity extends AppCompatActivity
         setContentView(R.layout.activity_luv_letter);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.luv_letter_recycler_view);
+        floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        LuvLetterAdapter drawerMenuAdapter = new LuvLetterAdapter(list);
+        LuvLetterAdapter drawerMenuAdapter = new LuvLetterAdapter(list, this);
         recyclerView.setAdapter(drawerMenuAdapter);
 
         setSupportActionBar(toolbar);
@@ -61,5 +68,19 @@ public class LuvLetterActivity extends AppCompatActivity
                 finish();
             }
         });
+        floatingActionButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(LuvLetterActivity.this, NewLuvLetterActivity.class));
+            }
+        });
+    }
+
+    @Override
+    public void itemClick(LuvLetter luvLetter, int position)
+    {
+        Log.i(TAG, "itemClick: position: " + position);
     }
 }

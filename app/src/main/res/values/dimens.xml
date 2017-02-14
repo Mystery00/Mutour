@@ -16,6 +16,13 @@
     <dimen name="page_text_text_size">20sp</dimen>
     <dimen name="page_text_margin_top">20dp</dimen>
 
+    <!--New Luv Letter Activity-->
+    <dimen name="new_luv_letter_color_selector_height">140dp</dimen>
+    <dimen name="new_luv_letter_sender_width">100dp</dimen>
+    <dimen name="new_luv_letter_sender_margin_bottom">24dp</dimen>
+    <dimen name="new_luv_letter_selector_size">40dp</dimen>
+    <dimen name="new_luv_letter_selector_margin">10dp</dimen>
+
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="nav_text_padding_drawable">18dp</dimen>

@@ -61,7 +61,5 @@ public class LuvLetterActivity extends AppCompatActivity
                 finish();
             }
         });
-
     }
-
 }

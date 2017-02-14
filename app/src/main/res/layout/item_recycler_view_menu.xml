@@ -20,7 +20,7 @@
         android:layout_height="@dimen/nav_item_height"
         android:layout_marginStart="@dimen/nav_item_margin_start"
         android:gravity="center"
-        android:textColor="@color/color_white"
-        android:textSize="@dimen/nav_item_text_size"/>
+        android:textSize="@dimen/nav_item_text_size"
+        android:textColor="@color/color_white"/>
 
 </LinearLayout>

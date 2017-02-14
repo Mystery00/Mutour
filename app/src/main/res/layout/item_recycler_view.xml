@@ -15,18 +15,18 @@
         android:id="@+id/item_more"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
         android:background="@drawable/ic_more"
+        android:layout_alignParentEnd="true"
         android:contentDescription="@string/app_name"/>
 
     <TextView
         android:id="@+id/item_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginEnd="@dimen/item_recycler_view_drawer_menu_margin"
-        android:layout_marginStart="@dimen/item_recycler_view_drawer_menu_margin"
-        android:layout_toEndOf="@id/item_head"
         android:layout_toStartOf="@id/item_more"
+        android:layout_toEndOf="@id/item_head"
+        android:layout_marginStart="@dimen/item_recycler_view_drawer_menu_margin"
+        android:layout_marginEnd="@dimen/item_recycler_view_drawer_menu_margin"
         android:gravity="center_vertical"
         android:maxLines="1"
         android:textSize="@dimen/item_recycler_view_drawer_menu_text_size"/>

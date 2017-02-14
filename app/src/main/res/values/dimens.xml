@@ -9,6 +9,7 @@
     <dimen name="item_recycler_view_drawer_menu_margin_top">20dp</dimen>
     <dimen name="item_recycler_view_drawer_menu_text_size">20sp</dimen>
     <dimen name="item_recycler_view_luv_letter_height">240dp</dimen>
+    <dimen name="item_recycler_view_luv_letter_margin_top">10dp</dimen>
 
     <!--Page Activity-->
     <dimen name="page_title_margin_top">180dp</dimen>
@@ -17,7 +18,7 @@
     <dimen name="page_text_margin_top">20dp</dimen>
 
     <!--New Luv Letter Activity-->
-    <dimen name="new_luv_letter_color_selector_height">140dp</dimen>
+    <dimen name="new_luv_letter_color_selector_height">160dp</dimen>
     <dimen name="new_luv_letter_sender_width">100dp</dimen>
     <dimen name="new_luv_letter_sender_margin_bottom">24dp</dimen>
     <dimen name="new_luv_letter_selector_size">40dp</dimen>

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/item_recycler_view_luv_letter_height"
-                android:layout_marginTop="@dimen/nav_item_margin_top">
+                android:layout_marginTop="@dimen/item_recycler_view_luv_letter_margin_top">
 
     <TextView
         android:id="@+id/card_text"

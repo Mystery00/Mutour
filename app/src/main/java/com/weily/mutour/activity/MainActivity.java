@@ -18,9 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mystery0.ispinner.SpinnerItemClickListener;
 import com.mystery0.ispinner.iSpinner;
-import com.weily.ifloatmenu.MenuClick;
 import com.weily.ifloatmenu.iFloatMenu;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
 import com.weily.mutour.adapter.RecyclerViewAdapter;
@@ -87,52 +85,37 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //noinspection deprecation
         drawer.setDrawerListener(toggle);
-        toolbar.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        toolbar.setOnClickListener(v -> {
+            if (spinner.isOpen())
             {
-                if (spinner.isOpen())
-                {
-                    spinner.setLayoutVisiblity(View.GONE);
-                }
+                spinner.setLayoutVisiblity(View.GONE);
             }
         });
-        spinner.setOnItemClickListener(new SpinnerItemClickListener()
-        {
-            @Override
-            public void onItemClick(int position)
+        spinner.setOnItemClickListener(position -> {
+            switch (position)
             {
-                switch (position)
-                {
-                    case 0:
-                        showList.clear();
-                        showList.addAll(GetList.getList(2));
-                        viewAdapter.notifyDataSetChanged();
-                        break;
-                    case 1:
-                        showList.clear();
-                        showList.addAll(GetList.getList(1));
-                        viewAdapter.notifyDataSetChanged();
-                        break;
-                }
+                case 0:
+                    showList.clear();
+                    showList.addAll(GetList.getList(2));
+                    viewAdapter.notifyDataSetChanged();
+                    break;
+                case 1:
+                    showList.clear();
+                    showList.addAll(GetList.getList(1));
+                    viewAdapter.notifyDataSetChanged();
+                    break;
             }
         });
-        floatMenu.setMenuClickListener(new MenuClick()
-        {
-            @Override
-            public void menuClick(int position)
+        floatMenu.setMenuClickListener(position -> {
+            switch (position)
             {
-                switch (position)
-                {
-                    case 0://post
-                        Log.i(TAG, "menuClick: 新书");
-                        startActivity(new Intent(MainActivity.this, NewPostActivity.class));
-                        break;
-                    case 1://get
-                        Log.i(TAG, "menuClick: 求书");
-                        break;
-                }
+                case 0://post
+                    Log.i(TAG, "menuClick: 新书");
+                    startActivity(new Intent(MainActivity.this, NewPostActivity.class));
+                    break;
+                case 1://get
+                    Log.i(TAG, "menuClick: 求书");
+                    break;
             }
         });
     }
@@ -186,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
     private void recyclerViewInit(View parent)
     {
         RecyclerView recyclerView_menu = (RecyclerView) parent.findViewById(R.id.recycler_view_menu);
-        List<MainListShow> menuList = GetList.getMenu(getApplicationContext());
+        List<MainListShow> menuList = GetList.getMenu();
         recyclerView_menu.setLayoutManager(new LinearLayoutManager(this));
         DrawerMenuAdapter drawerMenuAdapter = new DrawerMenuAdapter(menuList, this);
         recyclerView_menu.setAdapter(drawerMenuAdapter);

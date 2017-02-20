@@ -1,7 +1,6 @@
 package com.weily.mutour.public_method;
 
-import android.content.Context;
-
+import com.weily.mutour.App;
 import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.R;
 
@@ -33,18 +32,18 @@ public class GetList
         return listShows;
     }
 
-    public static List<MainListShow> getMenu(Context context)
+    public static List<MainListShow> getMenu()
     {
         List<MainListShow> listShows = new ArrayList<>();
-        listShows.add(new MainListShow(R.drawable.ic_i_mu, context.getString(R.string.nav_i_mu_blog)));
-        listShows.add(new MainListShow(R.drawable.ic_luv_letter, context.getString(R.string.nav_luv_letter)));
-        listShows.add(new MainListShow(R.drawable.ic_calendar, context.getString(R.string.nav_school_activity)));
-        listShows.add(new MainListShow(R.drawable.ic_my_books, context.getString(R.string.nav_my_books)));
-        listShows.add(new MainListShow(R.drawable.ic_borrowed, context.getString(R.string.nav_borrowed_books)));
-        listShows.add(new MainListShow(R.drawable.ic_recommend, context.getString(R.string.nav_recommend_books)));
-        listShows.add(new MainListShow(R.drawable.ic_store, context.getString(R.string.nav_store)));
-        listShows.add(new MainListShow(R.drawable.ic_discuss, context.getString(R.string.nav_discuss)));
-        listShows.add(new MainListShow(R.drawable.ic_setting, context.getString(R.string.nav_setting)));
+        listShows.add(new MainListShow(R.drawable.ic_i_mu, App.getContext().getString(R.string.nav_i_mu_blog)));
+        listShows.add(new MainListShow(R.drawable.ic_luv_letter, App.getContext().getString(R.string.nav_luv_letter)));
+        listShows.add(new MainListShow(R.drawable.ic_calendar, App.getContext().getString(R.string.nav_school_activity)));
+        listShows.add(new MainListShow(R.drawable.ic_my_books, App.getContext().getString(R.string.nav_my_books)));
+        listShows.add(new MainListShow(R.drawable.ic_borrowed, App.getContext().getString(R.string.nav_borrowed_books)));
+        listShows.add(new MainListShow(R.drawable.ic_recommend, App.getContext().getString(R.string.nav_recommend_books)));
+        listShows.add(new MainListShow(R.drawable.ic_store, App.getContext().getString(R.string.nav_store)));
+        listShows.add(new MainListShow(R.drawable.ic_discuss, App.getContext().getString(R.string.nav_discuss)));
+        listShows.add(new MainListShow(R.drawable.ic_setting, App.getContext().getString(R.string.nav_setting)));
         return listShows;
     }
 }

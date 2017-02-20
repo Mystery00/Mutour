@@ -43,16 +43,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.fullView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                int position = holder.getAdapterPosition();
-                Log.i(TAG, "onClick: " + position);
-                MainListShow mainListShow = list.get(position);
-                Log.i(TAG, "onClick: " + mainListShow.getText());
-            }
+        holder.fullView.setOnClickListener(v -> {
+            int position = holder.getAdapterPosition();
+            Log.i(TAG, "onClick: " + position);
+            MainListShow mainListShow = list.get(position);
+            Log.i(TAG, "onClick: " + mainListShow.getText());
         });
         return holder;
     }

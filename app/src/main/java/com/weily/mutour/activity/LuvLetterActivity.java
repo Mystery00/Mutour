@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.LuvLetterAdapter;
@@ -60,22 +59,8 @@ public class LuvLetterActivity extends AppCompatActivity implements LuvLetterLis
     private void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                finish();
-            }
-        });
-        floatingActionButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                startActivity(new Intent(LuvLetterActivity.this, NewLuvLetterActivity.class));
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
+        floatingActionButton.setOnClickListener(v -> startActivity(new Intent(LuvLetterActivity.this, NewLuvLetterActivity.class)));
     }
 
     @Override

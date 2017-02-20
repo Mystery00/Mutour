@@ -44,14 +44,7 @@ public class DrawerMenuAdapter extends RecyclerView.Adapter<DrawerMenuAdapter.Vi
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view_menu, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.fullView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                drawerItemListener.onItemClick(holder.getAdapterPosition(), holder.textView.getText().toString());
-            }
-        });
+        holder.fullView.setOnClickListener(v -> drawerItemListener.onItemClick(holder.getAdapterPosition(), holder.textView.getText().toString()));
         return holder;
     }
 

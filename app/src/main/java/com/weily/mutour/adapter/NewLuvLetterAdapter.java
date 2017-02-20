@@ -50,18 +50,13 @@ public class NewLuvLetterAdapter extends RecyclerView.Adapter<NewLuvLetterAdapte
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view_color_selector, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.circleImageView.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
+        holder.circleImageView.setOnClickListener(v -> {
+            if (holder.getAdapterPosition() == 0)
             {
-                if (holder.getAdapterPosition() == 0)
-                {
-                    luvLetterListener.itemSelected(colors.get((int) (Math.random() * 9 + 1)));
-                } else
-                {
-                    luvLetterListener.itemSelected(colors.get(holder.getAdapterPosition()));
-                }
+                luvLetterListener.itemSelected(colors.get((int) (Math.random() * 9 + 1)));
+            } else
+            {
+                luvLetterListener.itemSelected(colors.get(holder.getAdapterPosition()));
             }
         });
         return holder;

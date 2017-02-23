@@ -19,13 +19,18 @@
     <string name="hint_permission_storage">Please give the permission of STORAGE. </string>
     <string name="hint_username">Please enter your username</string>
     <string name="hint_password">Please enter your password</string>
+    <string name="hint_new_account">New Account</string>
 
     <string name="menu_search">Search</string>
 
-    <string name="error_null_text">The text is null…</string>
-    <string name="error_null_sender">The sender is null…</string>
-    <string name="error_null_username">There</string>
+    <string name="error_null_text">The text is null… </string>
+    <string name="error_null_sender">The sender is null… </string>
+    <string name="error_null_username">The username is null</string>
+    <string name="error_null_password">The password is null</string>
+    <string name="error_error_username">The username is invalid! </string>
+    <string name="error_short_password">The password is at least 6 characters! </string>
     <string name="error_password">Password Error! </string>
+    <string name="error_login_null">Please check out the text! </string>
 
     <string name="text_login">Sign In/Up</string>
     <string name="nav_i_mu_blog">iMu Blog</string>
@@ -41,4 +46,5 @@
     <string name="title_activity_luv_letter">LuvLetterActivity</string>
     <string name="title_activity_new_luv_letter">NewLuvLetterActivity</string>
     <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
 </resources>

@@ -44,7 +44,14 @@ public class LuvLetterAdapter extends RecyclerView.Adapter<LuvLetterAdapter.View
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view_luv_letter, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.fullView.setOnClickListener(v -> letterListener.itemClick(list.get(holder.getAdapterPosition()), holder.getAdapterPosition()));
+        holder.fullView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                letterListener.itemClick(list.get(holder.getAdapterPosition()), holder.getAdapterPosition());
+            }
+        });
         return holder;
     }
 

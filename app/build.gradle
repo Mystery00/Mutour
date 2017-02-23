@@ -7,21 +7,17 @@ autoVersion {
     patch 0
 }
 
+//noinspection GroovyMissingReturnStatement
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.weily.mutour"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode autoVersion.code
         versionName autoVersion.name
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        jackOptions.enabled = true
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     buildTypes {
         release {
@@ -36,8 +32,8 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.1'
-    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
     compile 'com.github.Mystery00:iSpinner:1.0.1'
     compile 'com.github.Mystery00:iFloatMenu:1.0.0'
     compile 'com.github.Mystery00:iPictureChooser:1.1.0'

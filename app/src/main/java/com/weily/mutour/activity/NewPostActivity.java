@@ -15,9 +15,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.mystery0.ipicturechooser.iPictureChooser;
+import com.mystery0.ipicturechooser.iPictureChooserListener;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
 
@@ -58,15 +60,27 @@ public class NewPostActivity extends AppCompatActivity
     private void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+            }
+        });
         setError(book_name);
         setError(book_price);
         setError(book_contact);
         setError(book_remarks);
-        pictureChooser.setDataList(R.drawable.ic_picture_chooser, () -> {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setType("image/*");
-            startActivityForResult(intent, iPictureChooser.REQUEST_IMG_CHOOSE);
+        pictureChooser.setDataList(R.drawable.ic_picture_chooser, new iPictureChooserListener()
+        {
+            @Override
+            public void MainClick()
+            {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, iPictureChooser.REQUEST_IMG_CHOOSE);
+            }
         });
     }
 

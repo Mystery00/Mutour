@@ -8,15 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.weily.mutour.callback.MainRecyclerItemListener;
 import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.R;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>
+public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder>
 {
-    private static final String TAG = "RecyclerViewAdapter";
     private List<MainListShow> list;
+    private MainRecyclerItemListener mainRecyclerItemListener;
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
@@ -33,9 +34,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(List<MainListShow> list)
+    public MainRecyclerViewAdapter(List<MainListShow> list, MainRecyclerItemListener mainRecyclerItemListener)
     {
         this.list = list;
+        this.mainRecyclerItemListener = mainRecyclerItemListener;
     }
 
     @Override
@@ -43,11 +45,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false);
         final ViewHolder holder = new ViewHolder(view);
-        holder.fullView.setOnClickListener(v -> {
-            int position = holder.getAdapterPosition();
-            Log.i(TAG, "onClick: " + position);
-            MainListShow mainListShow = list.get(position);
-            Log.i(TAG, "onClick: " + mainListShow.getText());
+        holder.fullView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                int position = holder.getAdapterPosition();
+                mainRecyclerItemListener.onItemClick(list.get(position), position);
+            }
         });
         return holder;
     }

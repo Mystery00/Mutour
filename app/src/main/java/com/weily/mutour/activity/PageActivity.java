@@ -19,15 +19,20 @@ public class PageActivity extends AppCompatActivity
         String text = getIntent().getStringExtra("text");
         TextView textView = (TextView) findViewById(R.id.text);
         textView.setText(text);
-        new Thread(() -> {
-            try
+        new Thread(new Runnable()
+        {
+            @Override
+            public void run()
             {
-                Thread.sleep(1500);
-                startActivity(new Intent(PageActivity.this, MainActivity.class));
-                finish();
-            } catch (InterruptedException e)
-            {
-                e.printStackTrace();
+                try
+                {
+                    Thread.sleep(1500);
+                    startActivity(new Intent(PageActivity.this, MainActivity.class));
+                    finish();
+                } catch (InterruptedException e)
+                {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }

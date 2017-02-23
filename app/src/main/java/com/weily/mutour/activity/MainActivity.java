@@ -17,27 +17,34 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
+import com.mystery0.ispinner.SpinnerItemClickListener;
 import com.mystery0.ispinner.iSpinner;
+import com.weily.ifloatmenu.MenuClick;
 import com.weily.ifloatmenu.iFloatMenu;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
-import com.weily.mutour.adapter.RecyclerViewAdapter;
+import com.weily.mutour.adapter.MainRecyclerViewAdapter;
 import com.weily.mutour.callback.DrawerItemListener;
+import com.weily.mutour.callback.MainRecyclerItemListener;
 import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.public_method.GetList;
 import com.weily.mutour.R;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements DrawerItemListener
+public class MainActivity extends AppCompatActivity
+        implements DrawerItemListener, MainRecyclerItemListener, View.OnClickListener
 {
     private static final String TAG = "MainActivity";
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private iSpinner spinner;
     private iFloatMenu floatMenu;
-    private RecyclerViewAdapter viewAdapter;
+    private MainRecyclerViewAdapter viewAdapter;
     private List<MainListShow> showList;
+    private TextView head_start;
+    private TextView head_end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -54,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
         RecyclerView recyclerView_main = (RecyclerView) findViewById(R.id.recycler_view);
         View menu_start = findViewById(R.id.drawer_layout_start);
         View menu_end = findViewById(R.id.drawer_layout_end);
+        head_start = (TextView) menu_start.findViewById(R.id.img_head);
+        head_end = (TextView) menu_end.findViewById(R.id.img_head);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         spinner = (iSpinner) findViewById(R.id.spinner);
@@ -64,11 +73,11 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
 
         showList = GetList.getList(1);
         recyclerView_main.setLayoutManager(new LinearLayoutManager(this));
-        viewAdapter = new RecyclerViewAdapter(showList);
+        viewAdapter = new MainRecyclerViewAdapter(showList, this);
         recyclerView_main.setAdapter(viewAdapter);
 
         spinner.setStrings(getResources().getStringArray(R.array.books_classification));
-        spinner.setSelected(0);
+        spinner.setSelected(1);
         spinner.setListBackground(Color.BLACK);
 
         floatMenu.setNumber(2);
@@ -80,44 +89,61 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
 
     private void monitor()
     {
-        toolbar.setNavigationIcon(R.drawable.ic_menu);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //noinspection deprecation
         drawer.setDrawerListener(toggle);
-        toolbar.setOnClickListener(v -> {
-            if (spinner.isOpen())
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
+        toolbar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
             {
-                spinner.setLayoutVisiblity(View.GONE);
+                if (spinner.isOpen())
+                {
+                    spinner.setLayoutVisiblity(View.GONE);
+                }
             }
         });
-        spinner.setOnItemClickListener(position -> {
-            switch (position)
+        spinner.setOnItemClickListener(new SpinnerItemClickListener()
+        {
+            @Override
+            public void onItemClick(int position)
             {
-                case 0:
-                    showList.clear();
-                    showList.addAll(GetList.getList(2));
-                    viewAdapter.notifyDataSetChanged();
-                    break;
-                case 1:
-                    showList.clear();
-                    showList.addAll(GetList.getList(1));
-                    viewAdapter.notifyDataSetChanged();
-                    break;
+                switch (position)
+                {
+                    case 0:
+                        showList.clear();
+                        showList.addAll(GetList.getList(2));
+                        viewAdapter.notifyDataSetChanged();
+                        break;
+                    case 1:
+                        showList.clear();
+                        showList.addAll(GetList.getList(1));
+                        viewAdapter.notifyDataSetChanged();
+                        break;
+                }
             }
         });
-        floatMenu.setMenuClickListener(position -> {
-            switch (position)
+        floatMenu.setMenuClickListener(new MenuClick()
+        {
+            @Override
+            public void menuClick(int position)
             {
-                case 0://post
-                    Log.i(TAG, "menuClick: 新书");
-                    startActivity(new Intent(MainActivity.this, NewPostActivity.class));
-                    break;
-                case 1://get
-                    Log.i(TAG, "menuClick: 求书");
-                    break;
+                switch (position)
+                {
+                    case 0://post
+                        Log.i(TAG, "menuClick: 新书");
+                        startActivity(new Intent(MainActivity.this, NewPostActivity.class));
+                        break;
+                    case 1://get
+                        Log.i(TAG, "menuClick: 求书");
+                        break;
+                }
             }
         });
+        head_start.setOnClickListener(this);
+        head_end.setOnClickListener(this);
     }
 
     @Override
@@ -188,5 +214,18 @@ public class MainActivity extends AppCompatActivity implements DrawerItemListene
                 startActivity(new Intent(MainActivity.this, LuvLetterActivity.class));
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(MainListShow mainListShow, int position)
+    {
+        Log.i(TAG, "onItemClick: " + mainListShow.getText());
+        Log.i(TAG, "onItemClick: " + position);
+    }
+
+    @Override
+    public void onClick(View v)
+    {
+        startActivity(new Intent(MainActivity.this, SignInActivity.class));
     }
 }

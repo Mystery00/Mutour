@@ -61,7 +61,14 @@ public class NewLuvLetterActivity extends AppCompatActivity implements NewLuvLet
     private void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                finish();
+            }
+        });
     }
 
     @Override

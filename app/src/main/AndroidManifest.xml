@@ -54,6 +54,11 @@
             android:label="@string/title_activity_new_luv_letter"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".activity.SignInActivity"
+            android:label="@string/title_activity_sign_in"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

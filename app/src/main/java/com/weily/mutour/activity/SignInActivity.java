@@ -5,6 +5,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 
@@ -55,12 +57,62 @@ public class SignInActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                String username = inputLayout_username.getEditText().getText().toString();
-                String password = inputLayout_password.getEditText().getText().toString();
-                Log.i(TAG, "monitor: username: " + username);
-                Log.i(TAG, "monitor: password: " + password);
+                if (isFormat())
+                {
+                    String username = inputLayout_username.getEditText().getText().toString();
+                    String password = inputLayout_password.getEditText().getText().toString();
+                    Log.i(TAG, "monitor: username: " + username);
+                    Log.i(TAG, "monitor: password: " + password);
+                }
+            }
+        });
+        setError(inputLayout_username);
+        setError(inputLayout_password);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private boolean isFormat()
+    {
+        boolean result = true;
+        if (inputLayout_username.getEditText().getText().length() == 0)
+        {
+            inputLayout_username.setError(getString(R.string.error_null_text));
+            result = false;
+        }
+        if (inputLayout_password.getEditText().getText().length() == 0)
+        {
+            inputLayout_password.setError(getString(R.string.error_null_text));
+            result = false;
+        }
+        return result;
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private void setError(final TextInputLayout inputLayout)
+    {
+        inputLayout.getEditText().addTextChangedListener(new TextWatcher()
+        {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after)
+            {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable)
+            {
+                if (editable.length() == 0)
+                {
+                    inputLayout.setError(getString(R.string.error_null_text));
+                } else
+                {
+                    inputLayout.setError(null);
+                }
             }
         });
     }
-
 }

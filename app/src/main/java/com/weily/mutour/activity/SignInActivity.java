@@ -1,5 +1,6 @@
 package com.weily.mutour.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,7 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.weily.mutour.R;
@@ -18,6 +21,7 @@ import com.weily.mutour.R;
 public class SignInActivity extends AppCompatActivity
 {
     private static final String TAG = "SignInActivity";
+    private static final int REQUEST_CODE = 2056;
     private View view;
     private Toolbar toolbar;
     private FloatingActionButton fab;
@@ -66,17 +70,7 @@ public class SignInActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                if (isFormat())
-                {
-                    String username = inputLayout_username.getEditText().getText().toString();
-                    String password = inputLayout_password.getEditText().getText().toString();
-                    Log.i(TAG, "monitor: username: " + username);
-                    Log.i(TAG, "monitor: password: " + password);
-                } else
-                {
-                    Snackbar.make(view, R.string.error_login_null, Snackbar.LENGTH_LONG)
-                            .show();
-                }
+                login();
             }
         });
         text_new_account.setOnClickListener(new View.OnClickListener()
@@ -84,7 +78,17 @@ public class SignInActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                startActivityForResult(new Intent(SignInActivity.this, SignUpActivity.class), REQUEST_CODE);
+            }
+        });
+        //软键盘右下角按钮监听
+        inputLayout_password.getEditText().setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                login();
+                return false;
             }
         });
     }
@@ -135,5 +139,34 @@ public class SignInActivity extends AppCompatActivity
                 }
             }
         });
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private void login()
+    {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        if (isFormat())
+        {
+            String username = inputLayout_username.getEditText().getText().toString();
+            String password = inputLayout_password.getEditText().getText().toString();
+            Log.i(TAG, "monitor: username: " + username);
+            Log.i(TAG, "monitor: password: " + password);
+        } else
+        {
+            Snackbar.make(view, R.string.error_login_null, Snackbar.LENGTH_LONG)
+                    .show();
+        }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK)
+        {
+            inputLayout_username.getEditText().setText(data.getStringExtra("username"));
+            inputLayout_password.getEditText().setText(data.getStringExtra("password"));
+        }
     }
 }

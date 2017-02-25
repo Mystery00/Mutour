@@ -8,7 +8,6 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 
 import com.weily.mutour.R;
 
@@ -16,7 +15,6 @@ public class WebActivity extends AppCompatActivity
 {
     private Toolbar toolbar;
     private WebView webView;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,7 +31,6 @@ public class WebActivity extends AppCompatActivity
         setContentView(R.layout.activity_web);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         webView = (WebView) findViewById(R.id.web);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(getIntent().getStringExtra("url"));
@@ -41,6 +38,7 @@ public class WebActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
     }
 
+    @SuppressWarnings("ConstantConditions")
     private void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -54,12 +52,6 @@ public class WebActivity extends AppCompatActivity
         });
         webView.setWebChromeClient(new WebChromeClient()
         {
-            @Override
-            public void onProgressChanged(WebView view, int newProgress)
-            {
-                progressBar.setProgress(newProgress);
-            }
-
             @Override
             public void onReceivedTitle(WebView view, String title)
             {

@@ -22,6 +22,8 @@
     <string name="hint_new_account">New Account</string>
 
     <string name="menu_search">Search</string>
+    <string name="menu_done">Done</string>
+    <string name="menu_open_browser">Open In Browser</string>
 
     <string name="error_null_text">The text is null… </string>
     <string name="error_null_sender">The sender is null… </string>

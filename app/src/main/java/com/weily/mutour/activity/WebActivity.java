@@ -1,9 +1,14 @@
 package com.weily.mutour.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
@@ -15,6 +20,7 @@ public class WebActivity extends AppCompatActivity
 {
     private Toolbar toolbar;
     private WebView webView;
+    private float start = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,4 +66,53 @@ public class WebActivity extends AppCompatActivity
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.web, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_open_browser:
+                Intent intent = new Intent();
+                intent.setAction("android.intent.action.VIEW");
+                Uri content_url = Uri.parse(getIntent().getStringExtra("url"));
+                intent.setData(content_url);
+                startActivity(intent);
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event)
+    {
+        switch (event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                start = event.getX();
+                break;
+            case MotionEvent.ACTION_UP:
+                float end = event.getX();
+                float distance = end - start;
+                if (distance > 400)
+                {
+                    webView.goBack();
+                    break;
+                }
+                if (distance < -400)
+                {
+                    webView.goForward();
+                    break;
+                }
+                break;
+        }
+        return super.dispatchTouchEvent(event);
+    }
 }

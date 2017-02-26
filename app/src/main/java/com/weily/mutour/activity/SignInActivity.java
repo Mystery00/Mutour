@@ -15,8 +15,19 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.weily.mutour.App;
 import com.weily.mutour.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignInActivity extends AppCompatActivity
 {
@@ -148,10 +159,38 @@ public class SignInActivity extends AppCompatActivity
         inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
         if (isFormat())
         {
-            String username = inputLayout_username.getEditText().getText().toString();
-            String password = inputLayout_password.getEditText().getText().toString();
-            Log.i(TAG, "monitor: username: " + username);
-            Log.i(TAG, "monitor: password: " + password);
+            final String username = inputLayout_username.getEditText().getText().toString();
+            final String password = inputLayout_password.getEditText().getText().toString();
+            RequestQueue requestQueue = Volley.newRequestQueue(App.getContext());
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.mutour.vip/mutour/mtlog.handle.php",
+                    new Response.Listener<String>()
+                    {
+                        @Override
+                        public void onResponse(String s)
+                        {
+                            Log.i(TAG, "onResponse: " + s);
+                            Toast.makeText(App.getContext(), s, Toast.LENGTH_SHORT).show();
+                        }
+                    },
+                    new Response.ErrorListener()
+                    {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError)
+                        {
+                            Log.e(TAG, "onErrorResponse: " + volleyError.getMessage(), volleyError);
+                        }
+                    })
+            {
+                @Override
+                protected Map<String, String> getParams()
+                {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("username", username);
+                    map.put("password", password);
+                    return map;
+                }
+            };
+            requestQueue.add(stringRequest);
         } else
         {
             Snackbar.make(view, R.string.error_login_null, Snackbar.LENGTH_LONG)

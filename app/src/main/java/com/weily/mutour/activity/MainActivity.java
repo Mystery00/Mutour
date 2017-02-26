@@ -146,35 +146,6 @@ public class MainActivity extends AppCompatActivity
                         startActivity(new Intent(MainActivity.this, NewPostActivity.class));
                         break;
                     case 1://get
-                        RequestQueue requestQueue = Volley.newRequestQueue(App.getContext());
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, "123.206.91.66/book/php/login.handle.php",
-                                new Response.Listener<String>()
-                                {
-                                    @Override
-                                    public void onResponse(String s)
-                                    {
-                                        Log.i(TAG, "onResponse: " + s);
-                                    }
-                                },
-                                new Response.ErrorListener()
-                                {
-                                    @Override
-                                    public void onErrorResponse(VolleyError volleyError)
-                                    {
-                                        Log.e(TAG, "onErrorResponse: " + volleyError.getMessage(), volleyError);
-                                    }
-                                })
-                        {
-                            @Override
-                            protected Map<String, String> getParams()
-                            {
-                                Map<String, String> map = new HashMap<>();
-                                map.put("username", "123");
-                                map.put("password", "123");
-                                return map;
-                            }
-                        };
-                        requestQueue.add(stringRequest);
                         Log.i(TAG, "menuClick: 求书");
                         break;
                 }

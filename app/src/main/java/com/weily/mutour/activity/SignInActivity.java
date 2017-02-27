@@ -18,13 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
+import com.weily.mutour.callback.onResponseListener;
+import com.weily.mutour.class_class.LoginResponseGson;
+import com.weily.mutour.public_method.HttpUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -161,36 +160,50 @@ public class SignInActivity extends AppCompatActivity
         {
             final String username = inputLayout_username.getEditText().getText().toString();
             final String password = inputLayout_password.getEditText().getText().toString();
-            RequestQueue requestQueue = Volley.newRequestQueue(App.getContext());
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://www.mutour.vip/mutour/mtlog.handle.php",
-                    new Response.Listener<String>()
+            Map<String, String> map = new HashMap<>();
+            map.put("username", username);
+            map.put("password", password);
+            new HttpUtil()
+                    .setMethod(Request.Method.POST)
+                    .setUrl(getString(R.string.login_api))
+                    .setMap(map)
+                    .setResponse(new onResponseListener()
                     {
                         @Override
-                        public void onResponse(String s)
+                        public void response(int code, String message)
                         {
-                            Log.i(TAG, "onResponse: " + s);
-                            Toast.makeText(App.getContext(), s, Toast.LENGTH_SHORT).show();
-                        }
-                    },
-                    new Response.ErrorListener()
-                    {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError)
-                        {
-                            Log.e(TAG, "onErrorResponse: " + volleyError.getMessage(), volleyError);
+                            switch (code)
+                            {
+                                case 0:
+                                    Log.e(TAG, "response: " + message);
+                                    break;
+                                case 1:
+                                    Gson gson = new Gson();
+                                    LoginResponseGson loginResponseGson = gson.fromJson(message, LoginResponseGson.class);
+                                    switch (loginResponseGson.getStatus())
+                                    {
+                                        case 0://登陆成功
+                                            Toast.makeText(App.getContext(), R.string.hint_login_success, Toast.LENGTH_SHORT)
+                                                    .show();
+                                            break;
+                                        case 1://用户名为空
+                                            break;
+                                        case 2://密码为空
+                                            break;
+                                        case 3://用户名不存在
+                                            Snackbar.make(view, R.string.error_error_username, Snackbar.LENGTH_SHORT)
+                                                    .show();
+                                            break;
+                                        case 4://密码错误
+                                            Snackbar.make(view, R.string.error_password, Toast.LENGTH_SHORT)
+                                                    .show();
+                                            break;
+                                    }
+                                    break;
+                            }
                         }
                     })
-            {
-                @Override
-                protected Map<String, String> getParams()
-                {
-                    Map<String, String> map = new HashMap<>();
-                    map.put("username", username);
-                    map.put("password", password);
-                    return map;
-                }
-            };
-            requestQueue.add(stringRequest);
+                    .open();
         } else
         {
             Snackbar.make(view, R.string.error_login_null, Snackbar.LENGTH_LONG)

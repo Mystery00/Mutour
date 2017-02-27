@@ -6,6 +6,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="hitokoto_api">http://api.hitokoto.cn/?encode=text</string>
+    <string name="login_api">http://www.mutour.vip/mutour/mtlog.handle.php</string>
 
     <string name="hint_add_picture">please click the button of "+" to add pictures! </string>
     <string name="hint_view_picture">Click the item to view and long click the item to remove! </string>
@@ -20,6 +21,7 @@
     <string name="hint_username">Please enter your username</string>
     <string name="hint_password">Please enter your password</string>
     <string name="hint_new_account">New Account</string>
+    <string name="hint_login_success">Login Success! </string>
 
     <string name="menu_search">Search</string>
     <string name="menu_done">Done</string>

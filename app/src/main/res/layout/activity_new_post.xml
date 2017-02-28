@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_book_remarks"/>
 
-        <com.mystery0.ipicturechooser.iPictureChooser
+        <com.mystery0.tools.ipicturechooser.iPictureChooser
             android:id="@+id/picture_chooser"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

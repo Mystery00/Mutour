@@ -25,10 +25,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.mystery0.ispinner.SpinnerItemClickListener;
-import com.mystery0.ispinner.iSpinner;
-import com.weily.ifloatmenu.MenuClick;
-import com.weily.ifloatmenu.iFloatMenu;
+import com.mystery0.tools.ifloatmenu.MenuClick;
+import com.mystery0.tools.ifloatmenu.iFloatMenu;
+import com.mystery0.tools.ispinner.SpinnerItemClickListener;
+import com.mystery0.tools.ispinner.iSpinner;
 import com.weily.mutour.App;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
 import com.weily.mutour.adapter.MainRecyclerViewAdapter;
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity
 
         spinner.setStrings(getResources().getStringArray(R.array.books_classification));
         spinner.setSelected(1);
-        spinner.setListBackground(Color.BLACK);
 
         floatMenu.setNumber(2);
         floatMenu.setIcon(R.drawable.ic_button_icon);

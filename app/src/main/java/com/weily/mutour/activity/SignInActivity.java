@@ -17,13 +17,11 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.google.gson.Gson;
+import com.mystery0.tools.MysteryNetFrameWork.HttpUtil;
+import com.mystery0.tools.MysteryNetFrameWork.ResponseListener;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
-import com.weily.mutour.callback.onResponseListener;
-import com.weily.mutour.class_class.LoginResponseGson;
-import com.weily.mutour.public_method.HttpUtil;
+import com.weily.mutour.class_class.LoginResponseJson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -163,43 +161,42 @@ public class SignInActivity extends AppCompatActivity
             Map<String, String> map = new HashMap<>();
             map.put("username", username);
             map.put("password", password);
-            new HttpUtil()
-                    .setMethod(Request.Method.POST)
+            final HttpUtil httpUtil = new HttpUtil(App.getContext());
+            httpUtil.setRequestMethod(HttpUtil.RequestMethod.POST)
                     .setUrl(getString(R.string.login_api))
                     .setMap(map)
-                    .setResponse(new onResponseListener()
+                    .setResponseListener(new ResponseListener()
                     {
                         @Override
-                        public void response(int code, String message)
+                        public void onResponse(int i, String message)
                         {
-                            switch (code)
+                            if (i == 1)
                             {
-                                case 0:
-                                    Log.e(TAG, "response: " + message);
-                                    break;
-                                case 1:
-                                    Gson gson = new Gson();
-                                    LoginResponseGson loginResponseGson = gson.fromJson(message, LoginResponseGson.class);
-                                    switch (loginResponseGson.getStatus())
-                                    {
-                                        case 0://登陆成功
-                                            Toast.makeText(App.getContext(), R.string.hint_login_success, Toast.LENGTH_SHORT)
-                                                    .show();
-                                            break;
-                                        case 1://用户名为空
-                                            break;
-                                        case 2://密码为空
-                                            break;
-                                        case 3://用户名不存在
-                                            Snackbar.make(view, R.string.error_error_username, Snackbar.LENGTH_SHORT)
-                                                    .show();
-                                            break;
-                                        case 4://密码错误
-                                            Snackbar.make(view, R.string.error_password, Toast.LENGTH_SHORT)
-                                                    .show();
-                                            break;
-                                    }
-                                    break;
+                                LoginResponseJson loginResponseJson = httpUtil.fromJson(message, LoginResponseJson.class);
+                                switch (loginResponseJson.getStatus())
+                                {
+                                    case 0://登陆成功
+                                        Toast.makeText(App.getContext(), R.string.hint_login_success, Toast.LENGTH_SHORT)
+                                                .show();
+                                        break;
+                                    case 1://用户名为空
+                                        Log.e(TAG, "onResponse: 用户名为空");
+                                        break;
+                                    case 2://密码为空
+                                        Log.e(TAG, "onResponse: 密码为空");
+                                        break;
+                                    case 3://用户名不存在
+                                        Snackbar.make(view, R.string.error_error_username, Snackbar.LENGTH_SHORT)
+                                                .show();
+                                        break;
+                                    case 4://密码错误
+                                        Snackbar.make(view, R.string.error_password, Toast.LENGTH_SHORT)
+                                                .show();
+                                        break;
+                                }
+                            } else
+                            {
+                                Log.e(TAG, "onResponse: " + message);
                             }
                         }
                     })

@@ -1,11 +1,11 @@
 package com.weily.mutour.class_class;
 
-public class LoginResponseGson
+public class LoginResponseJson
 {
     private int status;
     private String mes;
 
-    public LoginResponseGson(int status, String mes)
+    public LoginResponseJson(int status, String mes)
     {
         this.status = status;
         this.mes = mes;

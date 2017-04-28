@@ -10,13 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.mystery0.tools.Logs.Logs;
 import com.mystery0.tools.MysteryNetFrameWork.HttpUtil;
 import com.mystery0.tools.MysteryNetFrameWork.ResponseListener;
 import com.weily.mutour.App;
@@ -172,7 +173,7 @@ public class SignInActivity extends AppCompatActivity
                         {
                             if (i == 1)
                             {
-                                LoginResponseJson loginResponseJson = httpUtil.fromJson(message, LoginResponseJson.class);
+                                LoginResponseJson loginResponseJson = new Gson().fromJson(message, LoginResponseJson.class);
                                 switch (loginResponseJson.getStatus())
                                 {
                                     case 0://登陆成功
@@ -180,10 +181,10 @@ public class SignInActivity extends AppCompatActivity
                                                 .show();
                                         break;
                                     case 1://用户名为空
-                                        Log.e(TAG, "onResponse: 用户名为空");
+                                        Logs.e(TAG, "onResponse: 用户名为空");
                                         break;
                                     case 2://密码为空
-                                        Log.e(TAG, "onResponse: 密码为空");
+                                        Logs.e(TAG, "onResponse: 密码为空");
                                         break;
                                     case 3://用户名不存在
                                         Snackbar.make(view, R.string.error_error_username, Snackbar.LENGTH_SHORT)
@@ -196,7 +197,7 @@ public class SignInActivity extends AppCompatActivity
                                 }
                             } else
                             {
-                                Log.e(TAG, "onResponse: " + message);
+                                Logs.e(TAG, "onResponse: " + message);
                             }
                         }
                     })

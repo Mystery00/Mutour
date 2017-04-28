@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 
+import com.mystery0.tools.Logs.Logs;
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.NewLuvLetterAdapter;
 import com.weily.mutour.callback.NewLuvLetterListener;
@@ -101,9 +101,9 @@ public class NewLuvLetterActivity extends AppCompatActivity implements NewLuvLet
                     {
                         sender = edit_luv_sender.getText().toString();
                     }
-                    Log.i(TAG, "onOptionsItemSelected: text: " + text);
-                    Log.i(TAG, "onOptionsItemSelected: sender: " + sender);
-                    Log.i(TAG, "onOptionsItemSelected: color: " + color);
+                    Logs.i(TAG, "onOptionsItemSelected: text: " + text);
+                    Logs.i(TAG, "onOptionsItemSelected: sender: " + sender);
+                    Logs.i(TAG, "onOptionsItemSelected: color: " + color);
                     //done
                     finish();
                 } else

@@ -12,14 +12,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mystery0.tools.ipicturechooser.iPictureChooser;
-import com.mystery0.tools.ipicturechooser.iPictureChooserListener;
+import com.mystery0.tools.Logs.Logs;
+import com.mystery0.tools.PictureChooser.iPictureChooser;
+import com.mystery0.tools.PictureChooser.iPictureChooserListener;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
 
@@ -103,7 +103,7 @@ public class NewPostActivity extends AppCompatActivity
                         new String[]{"error name", "error price", "error contact", "error remarks"}
                 ))
                 {
-                    Log.i(TAG, "onOptionsItemSelected: done");
+                    Logs.i(TAG, "onOptionsItemSelected: done");
                 }
                 break;
         }
@@ -182,7 +182,7 @@ public class NewPostActivity extends AppCompatActivity
         {
             if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
             {
-                Log.i(TAG, "onRequestPermissionsResult: 权限拒绝");
+                Logs.i(TAG, "onRequestPermissionsResult: 权限拒绝");
                 Toast.makeText(App.getContext(), getString(R.string.hint_permission_storage), Toast.LENGTH_SHORT)
                         .show();
                 finish();

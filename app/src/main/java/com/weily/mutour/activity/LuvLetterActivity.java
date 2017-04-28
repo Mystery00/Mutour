@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
+import com.mystery0.tools.Logs.Logs;
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.LuvLetterAdapter;
 import com.weily.mutour.callback.LuvLetterListener;
@@ -81,6 +81,6 @@ public class LuvLetterActivity extends AppCompatActivity implements LuvLetterLis
     @Override
     public void itemClick(LuvLetter luvLetter, int position)
     {
-        Log.i(TAG, "itemClick: position: " + position);
+        Logs.i(TAG, "itemClick: position: " + position);
     }
 }

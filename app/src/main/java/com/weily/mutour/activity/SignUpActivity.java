@@ -10,12 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
+import com.mystery0.tools.Logs.Logs;
 import com.weily.mutour.R;
 
 public class SignUpActivity extends AppCompatActivity
@@ -139,8 +139,8 @@ public class SignUpActivity extends AppCompatActivity
         {
             String username = input_username.getEditText().getText().toString();
             String password = input_password.getEditText().getText().toString();
-            Log.i(TAG, "monitor: username: " + username);
-            Log.i(TAG, "monitor: password: " + password);
+            Logs.i(TAG, "monitor: username: " + username);
+            Logs.i(TAG, "monitor: password: " + password);
             Intent intent = new Intent();
             intent.putExtra("username", username);
             intent.putExtra("password", password);

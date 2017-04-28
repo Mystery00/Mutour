@@ -3,13 +3,11 @@ package com.weily.mutour.activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
-import android.util.Log;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,17 +17,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.mystery0.tools.ifloatmenu.MenuClick;
-import com.mystery0.tools.ifloatmenu.iFloatMenu;
-import com.mystery0.tools.ispinner.SpinnerItemClickListener;
-import com.mystery0.tools.ispinner.iSpinner;
-import com.weily.mutour.App;
+import com.mystery0.tools.FloatMenu.MenuClick;
+import com.mystery0.tools.FloatMenu.iFloatMenu;
+import com.mystery0.tools.Logs.Logs;
+import com.mystery0.tools.iSpinner.SpinnerItemClickListener;
+import com.mystery0.tools.iSpinner.iSpinner;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
 import com.weily.mutour.adapter.MainRecyclerViewAdapter;
 import com.weily.mutour.callback.DrawerItemListener;
@@ -38,9 +30,7 @@ import com.weily.mutour.class_class.MainListShow;
 import com.weily.mutour.public_method.GetList;
 import com.weily.mutour.R;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity
         implements DrawerItemListener, MainRecyclerItemListener, View.OnClickListener
@@ -141,11 +131,11 @@ public class MainActivity extends AppCompatActivity
                 switch (position)
                 {
                     case 0://post
-                        Log.i(TAG, "menuClick: 新书");
+                        Logs.i(TAG, "menuClick: 新书");
                         startActivity(new Intent(MainActivity.this, NewPostActivity.class));
                         break;
                     case 1://get
-                        Log.i(TAG, "menuClick: 求书");
+                        Logs.i(TAG, "menuClick: 求书");
                         break;
                 }
             }
@@ -181,7 +171,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onQueryTextSubmit(String query)
             {
-                Log.i(TAG, "onQueryTextSubmit: " + query);
+                Logs.i(TAG, "onQueryTextSubmit: " + query);
                 return true;
             }
 
@@ -212,8 +202,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onItemClick(int position, String text)
     {
-        Log.i(TAG, "onItemClick: position: " + position);
-        Log.i(TAG, "onItemClick: text: " + text);
+        Logs.i(TAG, "onItemClick: position: " + position);
+        Logs.i(TAG, "onItemClick: text: " + text);
         switch (position)
         {
             case 0:
@@ -224,14 +214,17 @@ public class MainActivity extends AppCompatActivity
             case 1:
                 startActivity(new Intent(MainActivity.this, LuvLetterActivity.class));
                 break;
+            case 3:
+                
+                break;
         }
     }
 
     @Override
     public void onItemClick(MainListShow mainListShow, int position)
     {
-        Log.i(TAG, "onItemClick: " + mainListShow.getText());
-        Log.i(TAG, "onItemClick: " + position);
+        Logs.i(TAG, "onItemClick: " + mainListShow.getText());
+        Logs.i(TAG, "onItemClick: " + position);
     }
 
     @Override

@@ -24,6 +24,11 @@
     <dimen name="new_luv_letter_selector_size">40dp</dimen>
     <dimen name="new_luv_letter_selector_margin">10dp</dimen>
 
+    <!--My Book Activity-->
+    <dimen name="my_book_item_margin">20dp</dimen>
+    <dimen name="my_book_item_height">40dp</dimen>
+    <dimen name="my_book_item_text_size">24sp</dimen>
+
     <!--Sign In Activity-->
     <dimen name="sign_in_activity_fab_margin_end">24dp</dimen>
     <dimen name="sign_in_activity_text_margin_bottom">80dp</dimen>

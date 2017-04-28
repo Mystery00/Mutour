@@ -3,13 +3,13 @@ package com.weily.mutour.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mystery0.tools.Logs.Logs;
 import com.weily.mutour.R;
 
 public class SplashActivity extends AppCompatActivity
@@ -44,7 +44,7 @@ public class SplashActivity extends AppCompatActivity
                             @Override
                             public void onErrorResponse(VolleyError volleyError)
                             {
-                                Log.e(TAG, "onErrorResponse: " + volleyError.getMessage(), volleyError);
+                                Logs.e(TAG, "onErrorResponse: " + volleyError.getMessage());
                                 Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();

@@ -24,7 +24,7 @@
 
     <include layout="@layout/content_main"/>
 
-    <com.mystery0.tools.ifloatmenu.iFloatMenu
+    <com.mystery0.tools.FloatMenu.iFloatMenu
         android:id="@+id/i_float_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

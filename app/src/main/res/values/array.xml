@@ -2,6 +2,6 @@
 <resources>
     <string-array name="books_classification">
         <item>Teaching materials</item>
-        <item>Literary books</item>
+        <item>Library books</item>
     </string-array>
 </resources>

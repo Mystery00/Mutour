@@ -28,6 +28,11 @@ public class MyBookActivity extends AppCompatActivity implements ActivityMethod,
         super.onCreate(savedInstanceState);
         initialize();
         monitor();
+
+        list.add("asd");
+        list.add("asd");
+        list.add("asd");
+        list.add("asd");
     }
 
     @Override

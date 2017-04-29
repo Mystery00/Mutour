@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import com.mystery0.tools.Logs.Logs;
 import com.mystery0.tools.MysteryNetFrameWork.HttpUtil;
 import com.mystery0.tools.MysteryNetFrameWork.ResponseListener;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
 import com.weily.mutour.class_class.LoginResponseJson;
@@ -27,7 +28,7 @@ import com.weily.mutour.class_class.LoginResponseJson;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity
+public class SignInActivity extends AppCompatActivity implements ActivityMethod
 {
     private static final String TAG = "SignInActivity";
     private static final int REQUEST_CODE = 2056;
@@ -47,7 +48,7 @@ public class SignInActivity extends AppCompatActivity
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_sign_in);
         view = findViewById(R.id.coordinatorLayout);
@@ -61,7 +62,7 @@ public class SignInActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

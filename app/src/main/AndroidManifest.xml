@@ -74,6 +74,11 @@
             android:label="@string/title_activity_my_book"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".activity.SchoolActivity"
+            android:label="@string/title_activity_school"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

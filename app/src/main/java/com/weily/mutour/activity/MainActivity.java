@@ -22,6 +22,7 @@ import com.mystery0.tools.FloatMenu.iFloatMenu;
 import com.mystery0.tools.Logs.Logs;
 import com.mystery0.tools.iSpinner.SpinnerItemClickListener;
 import com.mystery0.tools.iSpinner.iSpinner;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.adapter.DrawerMenuAdapter;
 import com.weily.mutour.adapter.MainRecyclerViewAdapter;
 import com.weily.mutour.callback.DrawerItemListener;
@@ -33,7 +34,7 @@ import com.weily.mutour.R;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements DrawerItemListener, MainRecyclerItemListener, View.OnClickListener
+        implements ActivityMethod, DrawerItemListener, MainRecyclerItemListener, View.OnClickListener
 {
     private static final String TAG = "MainActivity";
     private Toolbar toolbar;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView_main = (RecyclerView) findViewById(R.id.recycler_view);
@@ -85,7 +86,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
     }
 
-    private void monitor()
+    public void monitor()
     {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

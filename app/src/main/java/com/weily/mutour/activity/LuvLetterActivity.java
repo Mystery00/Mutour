@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.mystery0.tools.Logs.Logs;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.LuvLetterAdapter;
 import com.weily.mutour.callback.LuvLetterListener;
@@ -18,7 +19,7 @@ import com.weily.mutour.class_class.LuvLetter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LuvLetterActivity extends AppCompatActivity implements LuvLetterListener
+public class LuvLetterActivity extends AppCompatActivity implements ActivityMethod, LuvLetterListener
 {
     private static final String TAG = "LuvLetterActivity";
     private Toolbar toolbar;
@@ -43,7 +44,7 @@ public class LuvLetterActivity extends AppCompatActivity implements LuvLetterLis
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_luv_letter);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,7 +58,7 @@ public class LuvLetterActivity extends AppCompatActivity implements LuvLetterLis
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

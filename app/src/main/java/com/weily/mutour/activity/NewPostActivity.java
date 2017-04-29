@@ -20,10 +20,11 @@ import android.widget.Toast;
 import com.mystery0.tools.Logs.Logs;
 import com.mystery0.tools.PictureChooser.iPictureChooser;
 import com.mystery0.tools.PictureChooser.iPictureChooserListener;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
 
-public class NewPostActivity extends AppCompatActivity
+public class NewPostActivity extends AppCompatActivity implements ActivityMethod
 {
     private static final String TAG = "NewPostActivity";
     private static final int PERMISSION = 322;
@@ -43,7 +44,7 @@ public class NewPostActivity extends AppCompatActivity
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_new_post);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -57,7 +58,7 @@ public class NewPostActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

@@ -14,11 +14,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.mystery0.tools.Logs.Logs;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.R;
 import com.weily.mutour.adapter.NewLuvLetterAdapter;
 import com.weily.mutour.callback.NewLuvLetterListener;
 
-public class NewLuvLetterActivity extends AppCompatActivity implements NewLuvLetterListener
+public class NewLuvLetterActivity extends AppCompatActivity implements ActivityMethod, NewLuvLetterListener
 {
     private static final String TAG = "NewLuvLetterActivity";
     private Toolbar toolbar;
@@ -38,7 +39,7 @@ public class NewLuvLetterActivity extends AppCompatActivity implements NewLuvLet
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_new_luv_letter);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -58,7 +59,7 @@ public class NewLuvLetterActivity extends AppCompatActivity implements NewLuvLet
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

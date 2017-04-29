@@ -16,9 +16,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 
 import com.mystery0.tools.Logs.Logs;
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.R;
 
-public class SignUpActivity extends AppCompatActivity
+public class SignUpActivity extends AppCompatActivity implements ActivityMethod
 {
     private static final String TAG = "SignUpActivity";
     private View view;
@@ -36,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity
         monitor();
     }
 
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_sign_up);
         view = findViewById(R.id.coordinatorLayout);
@@ -49,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

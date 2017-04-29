@@ -14,9 +14,10 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.weily.mutour.ActivityMethod;
 import com.weily.mutour.R;
 
-public class WebActivity extends AppCompatActivity
+public class WebActivity extends AppCompatActivity implements ActivityMethod
 {
     private Toolbar toolbar;
     private WebView webView;
@@ -32,7 +33,7 @@ public class WebActivity extends AppCompatActivity
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void initialize()
+    public void initialize()
     {
         setContentView(R.layout.activity_web);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -45,7 +46,7 @@ public class WebActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("ConstantConditions")
-    private void monitor()
+    public void monitor()
     {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()

@@ -1,58 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     android:id="@+id/content_new_luv_letter"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.weily.mutour.activity.NewLuvLetterActivity"
     tools:showIn="@layout/activity_new_luv_letter">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/new_luv_letter_selector"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/new_luv_letter_color_selector_height"
-        android:layout_marginBottom="1dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/color_selector"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hint_new_luv_letter_anonymity"
-        app:layout_constraintRight_toRightOf="@+id/new_luv_letter_sender"
-        app:layout_constraintTop_toBottomOf="@+id/new_luv_letter_sender"/>
+        android:layout_above="@id/new_luv_letter_selector"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/new_luv_letter_sender_margin_bottom"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:text="@string/hint_new_luv_letter_anonymity"/>
 
     <EditText
         android:id="@+id/new_luv_letter_sender"
         android:layout_width="@dimen/new_luv_letter_sender_width"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_above="@id/checkBox"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:background="@null"
-        android:hint="@string/hint_new_luv_letter_sender"
-        app:layout_constraintBottom_toTopOf="@+id/new_luv_letter_selector"
-        app:layout_constraintRight_toRightOf="@+id/new_luv_letter_text"/>
+        android:hint="@string/hint_new_luv_letter_sender"/>
 
     <EditText
         android:id="@+id/new_luv_letter_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="21dp"
-        android:layout_marginEnd="@dimen/activity_margin"
-        android:layout_marginStart="@dimen/activity_margin"
-        android:layout_marginTop="@dimen/activity_margin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/new_luv_letter_sender"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
         android:background="@null"
         android:gravity="center"
-        android:hint="@string/hint_new_luv_letter_text"
-        app:layout_constraintBottom_toBottomOf="@+id/new_luv_letter_sender"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:hint="@string/hint_new_luv_letter_text"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

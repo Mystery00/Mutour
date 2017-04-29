@@ -10,15 +10,15 @@
     tools:context="com.weily.mutour.activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <com.mystery0.tools.iSpinner.iSpinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="36dp"/>
+
+    <com.mystery0.tools.iSpinner.iSpinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </android.support.constraint.ConstraintLayout>

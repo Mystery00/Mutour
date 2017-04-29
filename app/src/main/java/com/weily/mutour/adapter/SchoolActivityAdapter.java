@@ -1,6 +1,5 @@
 package com.weily.mutour.adapter;
 
-import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +7,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+import com.mystery0.tools.ImageLoader.ImageCache;
 import com.weily.mutour.App;
 import com.weily.mutour.R;
 import com.weily.mutour.callback.SchoolActivityListener;
 import com.weily.mutour.class_class.SchoolActivity;
 
-import java.io.File;
 import java.util.List;
 
 public class SchoolActivityAdapter extends RecyclerView.Adapter<SchoolActivityAdapter.ViewHolder>
@@ -46,13 +48,20 @@ public class SchoolActivityAdapter extends RecyclerView.Adapter<SchoolActivityAd
     @Override
     public void onBindViewHolder(ViewHolder holder, int position)
     {
+        if (position == list.size() - 1)
+        {
+            holder.line.setVisibility(View.GONE);
+        }
         SchoolActivity schoolActivity = list.get(position);
         holder.title.setText(schoolActivity.getTitle());
         holder.source.setText(schoolActivity.getSource());
-        File file = new File(schoolActivity.getImgPath());
-        if (file.exists() && file.isFile())
+        if (schoolActivity.getImgPath() != null && !schoolActivity.getImgPath().equals(""))
         {
-            holder.imageView.setImageBitmap(BitmapFactory.decodeFile(schoolActivity.getImgPath()));
+            String fileName = schoolActivity.getImgCacheName();
+            RequestQueue requestQueue = Volley.newRequestQueue(App.getContext());
+            ImageLoader imageLoader = new ImageLoader(requestQueue, new ImageCache(App.getContext(), fileName == null || fileName.equals("") ? null : fileName));
+            ImageLoader.ImageListener listener = ImageLoader.getImageListener(holder.imageView, R.mipmap.image_default, R.mipmap.image_faild);
+            imageLoader.get(schoolActivity.getImgPath(), listener, 480, 300);
         }
     }
 
@@ -68,6 +77,7 @@ public class SchoolActivityAdapter extends RecyclerView.Adapter<SchoolActivityAd
         TextView title;
         TextView source;
         ImageView imageView;
+        View line;
 
         public ViewHolder(View itemView)
         {
@@ -76,6 +86,7 @@ public class SchoolActivityAdapter extends RecyclerView.Adapter<SchoolActivityAd
             title = (TextView) itemView.findViewById(R.id.title);
             source = (TextView) itemView.findViewById(R.id.source);
             imageView = (ImageView) itemView.findViewById(R.id.img);
+            line = itemView.findViewById(R.id.line);
         }
     }
 }

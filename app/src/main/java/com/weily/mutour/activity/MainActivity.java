@@ -209,11 +209,14 @@ public class MainActivity extends AppCompatActivity
         {
             case 0:
                 Intent intent = new Intent(MainActivity.this, WebActivity.class);
-                intent.putExtra("url", "http://www.imystery0.cn");
+                intent.putExtra("url", "https://mystery00.github.io");
                 startActivity(intent);
                 break;
             case 1:
                 startActivity(new Intent(MainActivity.this, LuvLetterActivity.class));
+                break;
+            case 2:
+                startActivity(new Intent(MainActivity.this, SchoolActivity.class));
                 break;
             case 3:
                 startActivity(new Intent(MainActivity.this, MyBookActivity.class));

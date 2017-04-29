@@ -5,6 +5,19 @@ public class SchoolActivity
     private String title;
     private String source;
     private String imgPath;
+    private String imgCacheName;
+
+    public SchoolActivity()
+    {
+    }
+
+    public SchoolActivity(String title, String source, String imgPath, String imgCacheName)
+    {
+        this.title = title;
+        this.source = source;
+        this.imgPath = imgPath;
+        this.imgCacheName = imgCacheName;
+    }
 
     public String getTitle()
     {
@@ -34,5 +47,15 @@ public class SchoolActivity
     public void setImgPath(String imgPath)
     {
         this.imgPath = imgPath;
+    }
+
+    public String getImgCacheName()
+    {
+        return imgCacheName;
+    }
+
+    public void setImgCacheName(String imgCacheName)
+    {
+        this.imgCacheName = imgCacheName;
     }
 }

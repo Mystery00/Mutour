@@ -221,6 +221,9 @@ public class MainActivity extends AppCompatActivity
             case 3:
                 startActivity(new Intent(MainActivity.this, MyBookActivity.class));
                 break;
+            case 7:
+                startActivity(new Intent(MainActivity.this, DiscussActivity.class));
+                break;
         }
     }
 

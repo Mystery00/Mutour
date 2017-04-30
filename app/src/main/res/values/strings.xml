@@ -54,4 +54,5 @@
     <string name="title_activity_web">WebActivity</string>
     <string name="title_activity_my_book">MyBookActivity</string>
     <string name="title_activity_school">SchoolActivity</string>
+    <string name="title_activity_discuss">DiscussActivity</string>
 </resources>

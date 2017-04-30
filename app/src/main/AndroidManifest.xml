@@ -80,6 +80,11 @@
             android:label="@string/title_activity_school"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".activity.DiscussActivity"
+            android:label="@string/title_activity_discuss"
+            android:theme="@style/AppTheme">
+        </activity>
     </application>
 
 </manifest>

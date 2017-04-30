@@ -2,6 +2,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="item_margin_top_bottom">10dp</dimen>
 
     <!--Item-->
     <dimen name="item_recycler_view_drawer_menu_height">40dp</dimen>
@@ -35,6 +36,10 @@
     <dimen name="school_activity_item_margin_top">20dp</dimen>
     <dimen name="school_activity_item_img_max_height">100dp</dimen>
     <dimen name="school_activity_item_img_max_width">160dp</dimen>
+    
+    <!--Discuss Activity-->
+    <dimen name="discuss_item_title_text_size">24sp</dimen>
+    <dimen name="discuss_item_img_size">50dp</dimen>
 
     <!--Sign In Activity-->
     <dimen name="sign_in_activity_fab_margin_end">24dp</dimen>

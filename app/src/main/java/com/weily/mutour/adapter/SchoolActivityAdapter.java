@@ -79,7 +79,7 @@ public class SchoolActivityAdapter extends RecyclerView.Adapter<SchoolActivityAd
         ImageView imageView;
         View line;
 
-        public ViewHolder(View itemView)
+        ViewHolder(View itemView)
         {
             super(itemView);
             this.itemView = itemView;
